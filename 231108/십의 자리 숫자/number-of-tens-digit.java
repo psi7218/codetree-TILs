@@ -17,7 +17,7 @@ public class Main {
         		break;
         	} else if (val > 10){
         		val = val/10;
-        		System.out.println(val);
+        		
         		arr[val-1] += 1;
         	}
         }
