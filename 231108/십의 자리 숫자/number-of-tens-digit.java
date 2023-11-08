@@ -11,12 +11,13 @@ public class Main {
         
         int[] arr = new int[]{0,0,0,0,0,0,0,0,0};
         
-        for (int i=0; i<10; i++) {
+        while (true) {
         	int val = Integer.parseInt(st.nextToken());
         	if (val == 0) {
         		break;
         	} else if (val > 10){
         		val = val/10;
+        		System.out.println(val);
         		arr[val-1] += 1;
         	}
         }
