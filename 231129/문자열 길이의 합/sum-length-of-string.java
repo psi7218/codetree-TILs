@@ -8,15 +8,14 @@ public class Main {
         
         int n = Integer.parseInt(br.readLine());
         String[] arr = new String[n];
-        String a = "a";
-        char word = a.charAt(0);
+        
         int count = 0;
         int a_count = 0;
         for (int i = 0; i < n; i++) {
         	arr[i] = br.readLine();
         	count += arr[i].length();
         	
-        	if (arr[i].charAt(0) == word ) {
+        	if (arr[i].charAt(0) == 'a' ) {
         		a_count += 1;
         	}
         	
