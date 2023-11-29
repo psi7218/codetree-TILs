@@ -22,9 +22,8 @@ public class Main {
         		count += 1;
         	}
         }
-        float result = length/count;
+        double result = (float)length/(float)count;
         String result1 = String.format("%.2f", result);
-        System.out.print(count + " " + result1);
-     
+        System.out.println(count + " " + result1);
     }
 }
