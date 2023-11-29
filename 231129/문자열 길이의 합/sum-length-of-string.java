@@ -16,11 +16,10 @@ public class Main {
         	arr[i] = br.readLine();
         	count += arr[i].length();
         	
-        	for (int j = 0 ; j < arr[i].length(); j++) {
-        		if (arr[i].charAt(j) == word ) {
-        			a_count += 1;
-        		}
+        	if (arr[i].charAt(0) == word ) {
+        		a_count += 1;
         	}
+        	
         }
         System.out.print(count + " " + a_count);
         
