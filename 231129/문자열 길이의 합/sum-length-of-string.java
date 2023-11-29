@@ -15,7 +15,7 @@ public class Main {
         	arr[i] = br.readLine();
         	count += arr[i].length();
         	
-        	if (arr[i].charAt(0) == 'a' ) {
+        	if (arr[i].charAt(0) == "a" ) {
         		a_count += 1;
         	}
         	
