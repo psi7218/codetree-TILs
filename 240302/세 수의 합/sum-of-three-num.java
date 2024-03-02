@@ -18,19 +18,25 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
+            hashMap.put(arr[i], hashMap.getOrDefault(arr[i], 0) +1);
         }
-        func(0,n,0,0,arr);
-        System.out.println(hashMap.get(m));
-    }
+        int answer = 0;
+        for (int i = 0; i < n; i++) {
+            if(!hashMap.containsKey(arr[i])) {
+                hashMap.put(arr[i], -1);
+            } else {
+                hashMap.put(arr[i], hashMap.get(arr[i]) -1);
+            }
 
-    static void func(int x, int n, int count,int sum, int[] arr) {
-        if (count == 3) {
-            hashMap.put(sum, hashMap.getOrDefault(sum, 0) +1);
-            return;
-        }
-        for (int i = x; i < n-2+count; i++) {
-            func(i+1, n, count + 1, sum + arr[i], arr);
-        }
-    }
+            for (int j = 0; j < i; j++) {
+                if (hashMap.containsKey(m - arr[i] - arr[j])) {
+                    answer += hashMap.get(m - arr[i] - arr[j]);
+                }
+            }
 
+        }
+        System.out.println(answer);
+
+
+    }
 }
