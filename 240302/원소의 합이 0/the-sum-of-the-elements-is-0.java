@@ -9,7 +9,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
         HashMap<Integer, Integer> hashMap = new HashMap<>();
 
         int n = Integer.parseInt(br.readLine());
@@ -18,22 +17,10 @@ public class Main {
         int[] B = new int[n];
         int[] C = new int[n];
         int[] D = new int[n];
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            A[i] = Integer.parseInt(st.nextToken());
-        }
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            B[i] = Integer.parseInt(st.nextToken());
-        }
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            C[i] = Integer.parseInt(st.nextToken());
-        }
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            D[i] = Integer.parseInt(st.nextToken());
-        }
+        func(A, br.readLine(),n);
+        func(B, br.readLine(),n);
+        func(C, br.readLine(),n);
+        func(D, br.readLine(),n);
 
         for (int i = 0; i < n; i++) {
             for ( int j = 0; j < n; j++) {
@@ -53,5 +40,12 @@ public class Main {
 
         System.out.println(answer);
 
+    }
+
+    static void func(int[] arr, String input, int n) {
+        StringTokenizer st = new StringTokenizer(input);
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
     }
 }
