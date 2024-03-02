@@ -46,7 +46,7 @@ public class Main {
             for ( int j = 0; j < n; j++) {
                 int value = - C[i] - D[j];
                 if (hashMap.getOrDefault(value, 0) > 0) {
-                    answer += 1;
+                    answer += hashMap.get(value);
                 }
             }
         }
