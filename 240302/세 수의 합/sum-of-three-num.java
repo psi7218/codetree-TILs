@@ -18,9 +18,9 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n-1; j++) {
-                for (int k = j; k < n-2; k ++){
+        for (int i = 0; i < n-2; i++) {
+            for (int j = i+1; j < n-1; j++) {
+                for (int k = j+1; k < n; k ++){
                     int num = arr[i] + arr[j] + arr[k];
                     hashMap.put(num, hashMap.getOrDefault(num,0) + 1);
                 }
