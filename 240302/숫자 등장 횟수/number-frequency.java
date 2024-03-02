@@ -22,10 +22,10 @@ public class Main {
             hashMap.put(key, currentValue+1);
         }
         st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < m; i++) {
+        while (st.hasMoreTokens()) {
             int question = Integer.parseInt(st.nextToken());
             if (0 == hashMap.getOrDefault(question,0)) {
-                System.out.println(0 + " ");
+                System.out.print(0 + " ");
             } else {
                 System.out.print(hashMap.get(question) + " ");
             }
