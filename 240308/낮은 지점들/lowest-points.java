@@ -20,7 +20,7 @@ public class Main {
                 map.put(x,y);
             }
         }
-        int answer = 0;
+        long answer = 0;
         for (int value : map.values()) {
             answer += value;
         }
