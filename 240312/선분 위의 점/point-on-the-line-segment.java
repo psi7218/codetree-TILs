@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.Buffer;
 import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -24,7 +25,7 @@ public class Main {
             int num = Integer.parseInt(st.nextToken());
             arr[i] = num;
         }
-
+        Arrays.sort(arr);
 
         for (int j = 0; j < m; j++) {
             st = new StringTokenizer(br.readLine());
