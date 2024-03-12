@@ -12,19 +12,19 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(st.nextToken());
+        long n = Long.parseLong(st.nextToken());
 
-        int left = 1;
-        int right = 1000000000;
-        int answer = 1000000000;
+        long left = 1;
+        long right = Integer.MAX_VALUE;
+        long answer = Integer.MAX_VALUE;
         while (left <= right) {
-            int mid = (left + right) / 2;
-            int val = mid/ 3 + mid /5 - mid /15;
+            long mid = (left + right) / 2;
+            long val = mid/ 3 + mid /5 - mid /15;
 
             if (mid - val >= n) {
                 answer = Math.min(answer, mid);
                 right = mid - 1;
-               
+
             } else {
                 left = mid + 1;
             }
