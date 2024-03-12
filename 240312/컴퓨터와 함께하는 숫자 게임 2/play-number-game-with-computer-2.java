@@ -8,26 +8,24 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static int m;
-    static int[] arr;
+    static long m;
+
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        m = Integer.parseInt(br.readLine());
-        arr = new int[m];
-        for (int i = 0; i < m; i++) {
-            arr[i] = i + 1;
-        }
-        int min = m;
-        int max = -1;
+        m = Long.parseLong(br.readLine());
+
+
+        long min = m;
+        long max = -1;
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
+        long a = Long.parseLong(st.nextToken());
+        long b = Long.parseLong(st.nextToken());
 
-        for (int k = a; k <= b; k++) {
-            int value = binary(k);
+        for (long k = a; k <= b; k++) {
+            long value = binary(k);
             min = Math.min(min, value);
             max = Math.max(max, value);
         }
@@ -35,25 +33,25 @@ public class Main {
 
 
     }
-    static int binary(int k) {
-        int left = 0;
-        int right = m - 1;
+    static long binary(long k) {
+        long left = 1;
+        long right = m;
 
-        int cnt = 0;
+        long cnt = 0;
         while (left <= right) {
-            int mid = (left + right) / 2;
-
-            if (arr[mid] == k) {
-                cnt += 1;
+            long mid = (left + right) / 2;
+            if (mid == k ) {
+                cnt++;
                 break;
             }
-            if (arr[mid] < k) {
-                left = mid + 1;
-                cnt++;
-            } else {
+            if (mid > k ) {
                 right = mid - 1;
                 cnt++;
+            } else {
+                left = mid + 1;
+                cnt++;
             }
+
         }
         return cnt;
     }
