@@ -14,13 +14,13 @@ public class Main {
         Long s = Long.parseLong(br.readLine());
 
         long left = 1;
-        long right = s;
+        long right = 2000000000;
         long answer = 0;
         while (left <= right) {
             long mid = (left + right) / 2;
             long val = mid * (mid + 1) / 2;
             if (val <= s) {
-                answer = mid;
+                answer = Math.max(mid,answer);
                 left = mid + 1;
             } else {
                 right = mid - 1;
