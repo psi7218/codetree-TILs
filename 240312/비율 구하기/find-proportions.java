@@ -24,8 +24,8 @@ public class Main {
             Map.Entry<String, Integer> entry = it.next();
             System.out.print(entry.getKey() + " ");
             double num = (entry.getValue() * 100) / n;
-            
-            String answer = String.format("%.4f", num);
+
+            String answer = String.format("%.4f", (double)(entry.getValue() * 100) / n);
 
             System.out.println(answer);
         }
