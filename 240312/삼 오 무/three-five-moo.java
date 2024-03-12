@@ -15,7 +15,7 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
 
         int left = 1;
-        int right = 1000000000;
+        int right = 1000000001;
         int answer = 0;
         while (left <= right) {
             int mid = (left + right) / 2;
