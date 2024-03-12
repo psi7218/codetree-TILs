@@ -16,18 +16,17 @@ public class Main {
 
         int left = 1;
         int right = 1000000000;
-        int answer = 0;
+        int answer = 1000000000;
         while (left <= right) {
             int mid = (left + right) / 2;
             int val = mid/ 3 + mid /5 - mid /15;
 
-            if (mid - val == n) {
-                answer = mid;
-                break;
-            } else if (mid -val < n) {
-                left = mid + 1;
-            } else {
+            if (mid - val >= n) {
+                answer = Math.min(answer, mid);
                 right = mid - 1;
+               
+            } else {
+                left = mid + 1;
             }
         }
         System.out.println(answer);
