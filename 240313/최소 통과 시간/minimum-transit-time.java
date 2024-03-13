@@ -13,16 +13,16 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        int left = 1;
-        int right = 1000000000;
-        int answer = 1000000000;
+        long left = 1;
+        long right = 100000000000L;
+        long answer = 100000000000L;
         arr = new int[m];
         for ( int i = 0; i < m; i++ ) {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
         while ( left <= right ) {
-            int mid = ( left + right ) / 2;
+            long mid = ( left + right ) / 2;
 
             if (func(mid)) {
                 right = mid - 1;
@@ -36,8 +36,8 @@ public class Main {
         System.out.println(answer);
     }
 
-    static boolean func(int time) {
-        int cnt = 0;
+    static boolean func(long time) {
+        long cnt = 0;
 
         for (int j = 0; j < m; j++) {
             cnt += time / arr[j] ;
