@@ -21,7 +21,7 @@ public class Main {
             }
             if (cnt >= k) {
                 right = mid - 1;
-                answer = Math.min(answer, cnt);
+                answer = Math.min(answer, mid);
             } else {
                 left = mid + 1;
             }
