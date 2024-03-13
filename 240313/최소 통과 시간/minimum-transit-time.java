@@ -14,8 +14,8 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
 
         long left = 1;
-        long right = 100000000000L;
-        long answer = 100000000000L;
+        long right = 100000000000000L;
+        long answer = 100000000000000L;
         arr = new int[m];
         for ( int i = 0; i < m; i++ ) {
             arr[i] = Integer.parseInt(br.readLine());
