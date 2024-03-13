@@ -16,6 +16,7 @@ public class Main {
         arr = new int[n];
         for (int i = 0; i < n; i++) {
             int num = Integer.parseInt(br.readLine());
+            arr[i] = num;
         }
         Arrays.sort(arr,0,n);
 
@@ -34,6 +35,7 @@ public class Main {
             }
 
         }
+        System.out.println(answer);
 
 
     }
