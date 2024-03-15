@@ -15,7 +15,7 @@ public class Main {
         arr = new int[n][n];
 
         StringTokenizer st;
-        int left = 1;
+        int left = 0;
         int right = 0;
         int answer = 0;
         for (int i = 0; i< n; i++) {
