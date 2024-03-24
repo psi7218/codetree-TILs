@@ -1,16 +1,30 @@
-n , k = map(int, input().split())
-arr = [0] * 1000001
+n, k = tuple(map(int, input().split()))
+candies = [(-1, -1)]
 for _ in range(n):
-    x, y = map(int, input().split())
-    arr[y] = x
+    cnt, x = tuple(map(int, input().split()))
+    candies.append((x, cnt))
 
-max_val = 0
-i = 0
-sum_val = sum(arr[0:2*k+1])
-while i <= 1000000 - 2*k - 1:
-    sum_val -= arr[i]
-    sum_val += arr[i+2*k+1]
-    max_val = max(max_val, sum_val)
-    i += 1
+def get_pos_of_candy(candy_idx):
+    x, _ = candies[candy_idx]
+    return x
 
-print(max_val)
+
+def get_num_of_candy(candy_idx):
+    _, cnt = candies[candy_idx]
+    return cnt
+
+candies.sort()
+
+
+ans = 0
+total_nums = 0
+j = 0
+for i in range(1, n + 1):
+    while j + 1 <= n and candies[j + 1][0] - candies[i][0] <= 2 * k:
+        total_nums += candies[j + 1][1]
+        j += 1
+ 
+    ans = max(ans, total_nums)
+    total_nums -= candies[i][1]
+
+print(ans)
