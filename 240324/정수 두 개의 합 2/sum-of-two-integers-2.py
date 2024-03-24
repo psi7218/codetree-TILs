@@ -6,11 +6,15 @@ for _ in range(n):
 arr.sort()
 
 cnt = 0
-j = 1
+j = n - 1
 for i in range(n):
-    while j < n and arr[i] + arr[j] <= k:
-        cnt += 1
-        j += 1
+    while j != 1 and arr[i] + arr[j] > k:
+        j -= 1
     
-    j -= 1
+    if j <= i:
+        break
+    
+    cnt += j - i 
+    
+    
 print(cnt)
