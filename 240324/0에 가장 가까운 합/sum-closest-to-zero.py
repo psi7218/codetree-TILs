@@ -9,7 +9,7 @@ for i in range(n):
         answer = min(answer, abs(arr[i] + arr[j]))
 
 
-    while i < j and arr[i] + arr[j] > 0:
+    while i < j - 1 and arr[i] + arr[j] > 0:
         j -= 1
         answer = min(answer, abs(arr[i] + arr[j]))
 
