@@ -12,4 +12,5 @@ for i in range(n):
         cnt += 1
         j += 1
     
+    j -= 1
 print(cnt)
