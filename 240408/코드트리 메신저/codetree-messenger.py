@@ -24,6 +24,10 @@ def func(num,depth):
                 func(node, depth + 1)
 
 
+# print(node)
+# print(tree)
+# print(depth_list)
+# print('------------------')
 for _ in range(q-1):
     command = list(map(int, input().split()))
     link = []   # 연결할 수 있는 노드 리스트
@@ -41,9 +45,10 @@ for _ in range(q-1):
     elif command[0] == 400:
         x, y = command[1], command[2]
         tree[node[x]].remove(x)
-        tree[node[x]].add(y)
-        tree[node[y]].remove(y)
         tree[node[y]].add(x)
+
+        tree[node[y]].remove(y)
+        tree[node[x]].add(y)
         node[x], node[y] = node[y], node[x]
         # depth_list[x], depth_list[y] = depth_list[y], depth_list[x]
 
