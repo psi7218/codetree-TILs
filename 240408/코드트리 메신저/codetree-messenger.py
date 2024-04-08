@@ -15,6 +15,9 @@ for idx in range(1, len(node)):
 
 
 def func(num,depth):
+    if depth > 20:
+        return
+    
     for node in tree[num]:
         if depth_list[node][1]:
             if depth_list[node][0] >= depth:
