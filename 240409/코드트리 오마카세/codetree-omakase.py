@@ -6,8 +6,10 @@ l, q = map(int, input().split())
 def makedefaultdict():
     return defaultdict(dict)
 
+def makeintdict():
+    return defaultdict(int)
 belt = defaultdict(makedefaultdict)
-man = [defaultdict(int) for _ in range(l)]
+man = defaultdict(makeintdict)
 seatisfull = set() ## 현재 사람이 있는 좌석 인덱스 조합
 
 time = 0
