@@ -1,5 +1,4 @@
 from collections import deque
-
 r, c, k = map(int, input().split())
 arr = [[0] * c for _ in range(r + 3)]
 
@@ -49,7 +48,6 @@ def findmaxcol(s,t):
     di = [0,1,0,-1]
     dj = [1,0,-1,0]
 
-
     max_val = 0
     visited = [[0] * c for _ in range(r + 3)]
 
@@ -74,7 +72,7 @@ def findmaxcol(s,t):
                     visited[ni][nj] = 1
 
     answer += max_val
-    # print(max_val)
+
 answer = 0
 temp = 1 ## 골렘 숫자
 direction = [[0] * c for _ in range(r + 3)]
@@ -103,15 +101,5 @@ for z in range(k):
         arr = [[0] * c for _ in range(r + 3)]
         direction = [[0] * c for _ in range(r + 3)]
     temp += 1
-    # for line in arr:
-    #     print(*line)
-    # print('-----------------------')
-#     print(z, answer)
-# #
-# for line in arr:
-#     print(*line)
-# print('-----------------------')
-# for lane in direction:
-#     print(*lane)
+
 print(answer)
-# print(direction)
