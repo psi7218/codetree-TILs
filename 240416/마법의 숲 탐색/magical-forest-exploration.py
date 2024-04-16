@@ -35,7 +35,7 @@ def downmove(x, y, dir):
         downmove(x+1,y+1, num[(dir+1) % 4])
 
     else:
-        if x >= 5:
+        if x >= 6:
             location = [x-1, y, dir]
             isTrue = True
             return
@@ -103,10 +103,11 @@ for z in range(k):
         arr = [[0] * c for _ in range(r + 3)]
         direction = [[0] * c for _ in range(r + 3)]
     temp += 1
-
-
+    # for line in arr:
+    #     print(*line)
+    # print('-----------------------')
 #     print(z, answer)
-#
+# #
 # for line in arr:
 #     print(*line)
 # print('-----------------------')
