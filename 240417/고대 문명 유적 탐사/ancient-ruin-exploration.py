@@ -126,6 +126,6 @@ for _ in range(k):
 
     arr = check[1]
     if answer == 0:
-        pass
+        break
     else:
         print(answer, end=" ")
