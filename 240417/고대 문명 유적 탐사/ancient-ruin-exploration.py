@@ -8,7 +8,7 @@ for _ in range(5):
 
 q = deque(map(int, input().split()))
 
-## 1. 획득가치 2. 각도가 작은 방법 3. 회전 중심 좌표의 열(x)이 작은 구간 4. 열이 같다면 행(y)이 작은 구간
+
 dx = [0,1,0,-1]
 dy = [1,0,-1,0]
 coordinate = [[1,1], [1,2], [1,3], [2,1], [2,2], [2,3], [3,1], [3,2], [3,3]]
@@ -25,6 +25,7 @@ def turn90(n,m):
     for x in range(3):
         for y in range(3):
             newmap[n-1+x][m-1+y] = partmap1[x][y]
+
 
     return newmap
 
@@ -99,16 +100,19 @@ for _ in range(k):
         x, y = coor[0], coor[1]
 
         val1 = getitem(turn90(x,y))
+
         val2 = getitem(turn180(x,y))
+
         val3 = getitem(turn270(x,y))
 
         collect.append([val1, 90, x, y])
-        collect.append([val1, 180, x, y])
-        collect.append([val1, 270, x, y])
-
-    collect.sort(key=lambda x: (-x[0][0], x[1], x[2], x[3]))
-
+        collect.append([val2, 180, x, y])
+        collect.append([val3, 270, x, y])
+    ## 1. 획득가치 2. 각도가 작은 방법 3. 회전 중심 좌표의 열(x)이 작은 구간 4. 열이 같다면 행(y)이 작은 구간
+    collect.sort(key=lambda x: (-x[0][0], x[1], x[3], x[2]))
+    # print(collect)
     check = collect.pop(0)[0]
+
     while not check[2]:
         answer += check[0]
         new_arr = check[1]
