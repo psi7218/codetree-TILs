@@ -8,7 +8,7 @@ arr = []
 for _ in range(n):
     arr.append(int(input()))
 
-answer = 0
+answer = -1
 for idx in range(n):
     if arr[idx] in check:
         if idx - check[arr[idx]] <= k:
