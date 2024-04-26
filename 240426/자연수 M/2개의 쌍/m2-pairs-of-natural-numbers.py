@@ -1,17 +1,32 @@
 n = int(input())
-m = 0
-arr = []
-val = 2e9 + 5
-for _ in range(n):
-    a, b = map(int, input().split())
-    m += a
-    for _ in range(a):
-        arr.append(b)
 
-answer = 0
+arr =[] 
+
+for _ in range(n):
+    x,y = map(int, input().split())
+    arr.append([y,x])
+
 arr.sort()
-for i in range(m//2):
-    val = arr[i] + arr[-1-i]
-    answer = max(answer, val)
+
+left = 0
+right = n-1
+answer = 0
+while left <= right:
+    lval, lcnt = arr[left]
+    rval, rcnt = arr[right]
+
+    answer = max(answer, lval + rval)
+
+    if lcnt > rcnt:
+        arr[left][1] -= rcnt
+        right -= 1
+    
+    elif lcnt < rcnt:
+        arr[right][1] -= lcnt
+        left += 1
+    
+    else:
+        left += 1
+        right -= 1
 
 print(answer)
