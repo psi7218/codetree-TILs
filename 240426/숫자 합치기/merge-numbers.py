@@ -2,6 +2,7 @@ import heapq
 n = int(input())
 
 q = list(map(int, input().split()))
+heapq.heapify(q)
 answer = 0
 
 while len(q) >= 2:
