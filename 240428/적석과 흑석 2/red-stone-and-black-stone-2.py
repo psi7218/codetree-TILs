@@ -26,8 +26,7 @@ black_stones.sort()
 # 이 값이 만약 b보다 같거나 작다면
 # 이 돌을 선택하는 것이 최선입니다.
 ans = 0
-print(black_stones)
-print(red_s)
+
 for b, a in black_stones:
     # a보다 같거나 큰 값이 있다면
     idx = red_s.bisect_left(a)
