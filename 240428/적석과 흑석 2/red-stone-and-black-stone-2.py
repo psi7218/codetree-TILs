@@ -24,7 +24,9 @@ for start, end in tball:
             answer += 1
             idx += 1
             break
-        else:
+        elif end < cball[idx]:
             idx += 1
+        elif cball[idx] < start:
+            break
 
 print(answer)
