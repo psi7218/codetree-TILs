@@ -13,7 +13,7 @@ for _ in range(n):
 
 cball.sort(reverse=True)
 
-tball.sort(key=lambda x : -x[0])
+tball.sort(key=lambda x : -x[1])
 
 
 idx = 0
