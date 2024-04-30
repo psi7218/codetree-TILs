@@ -2,21 +2,16 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 answer = 0
-for i in range(1,n-1 ):
+for i in range(1,n):
 	if arr[i-1] == 0:
 		arr[i-1] = 1
-		if arr[i] == 1:
-			arr[i] = 0
-		else:
-			arr[i] = 1
-		if arr[i+1] == 1:
-			arr[i+1] = 0
-		else:
-			arr[i+1] = 1
-
+		arr[i] ^= 1
+		if i +1 < n:
+			arr[i+1] ^= 1
+		
 		answer += 1
 
-if arr[-1] and arr[-2] and sum(arr[:n-2]) == n - 2:
-	print(answer)
-else:
+if arr[n-1] == 0:
 	print(-1)
+else:
+	print(answer)
