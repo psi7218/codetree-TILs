@@ -16,7 +16,7 @@ for i in range(1,n - 1):
 
 		answer += 1
 
-if arr[n-1] == 0:
-	print(-1)
-else:
+if sum(arr) == n:
 	print(answer)
+else:
+	print(-1)
