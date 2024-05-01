@@ -26,6 +26,8 @@ while idx < n:
             if idx + num <= n -1 :
                 if start[idx+ num] != end[idx + num]:
                     j = num
+                else:
+                    break
     else:
         idx += 1
         continue
