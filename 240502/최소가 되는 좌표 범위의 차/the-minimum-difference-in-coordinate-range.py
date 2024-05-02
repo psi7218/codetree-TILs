@@ -21,4 +21,6 @@ while end < n:
     else:
         end += 1
 
+if answer == 1e9:
+    answer = -1
 print(answer)
