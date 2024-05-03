@@ -9,12 +9,12 @@ for i in range(1, n+1):
         sum1 += arr[j]
         j += 1
 
-    if sum1 == m:
-        answer += 1
-        
+    if sum1 < m:
+        break
     
-    sum1 -= arr[i]
+    
+    
     if sum1 == m:
         answer += 1
-
+    sum1 -= arr[i]
 print(answer)
