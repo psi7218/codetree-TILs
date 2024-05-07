@@ -14,7 +14,8 @@ for j in range(n+1, -1,-1):
       R[j+2] = max_val
 
 answer = 0
-for k in range(2, n+2):
+for k in range(4, n):
+
     answer = max(answer, L[k-2] + R[k+2] + arr[k])
 
 
