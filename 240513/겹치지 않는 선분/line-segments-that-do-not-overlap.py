@@ -13,8 +13,7 @@ for j in range(n-2,-1, -1):
     R[j] = min(arr[j][1], R[j+1])
     
 answer = 0
-print(L)
-print(R)
+
 for k in range(n):
     _, x2 = arr[k]
     
