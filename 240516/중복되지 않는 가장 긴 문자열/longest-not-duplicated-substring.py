@@ -6,7 +6,6 @@ start = 0
 max_val = 0
 for i in range(n):
     if word[i] in record:
-        max_val = max(max_val, i - record[word[i]])
         start = record[word[i]] + 1
         record[word[i]] = i
 
