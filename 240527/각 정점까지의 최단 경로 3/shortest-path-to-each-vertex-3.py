@@ -17,7 +17,7 @@ def func():
         if dis[now] < dist:
             continue
         
-        for next in arr[dist]:
+        for next in arr[now]:
             new_node = next[0]
             new_dist = next[1]
 
