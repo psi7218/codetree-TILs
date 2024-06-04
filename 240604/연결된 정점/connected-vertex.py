@@ -1,10 +1,14 @@
 n, m = map(int, input().split())
 uf = [i for i in range(n+1)]
+size = [1] * (n+1)
 
 def union(x, y):
     a, b = find(x), find(y)
 
-    uf[a] = b
+    if a != b:
+        uf[a] = b
+
+        size[b] += size[a]
 
 def find(x):
     if uf[x] == x:
@@ -18,4 +22,5 @@ for _ in range(m):
         union(int(order[1]), int(order[2]))
 
     else:
-        print(uf.count(uf[int(order[1])]))
+        val = find(int(order[1]))
+        print(size[val])
