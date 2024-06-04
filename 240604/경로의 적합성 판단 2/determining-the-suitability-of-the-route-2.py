@@ -17,9 +17,18 @@ for _ in range(m):
     i, j  = map(int, input().split())
     union(i, j)
 
-s, e = map(int, input().split())
+orders = list(map(int, input().split()))
 
-if find(s) == find(e):
-    print(1)
-else:
+flag = False
+
+for idx in range(k-1):
+    if find(orders[idx]) == find(orders[idx+1]):
+        continue
+
+    else:
+        flag = True
+
+if flag:
     print(0)
+else:
+    print(1)
