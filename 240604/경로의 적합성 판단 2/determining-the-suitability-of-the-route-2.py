@@ -14,10 +14,11 @@ def union(x, y):
     uf[a] = b
 
 for _ in range(m):
-    x, y = map(int, input().split())
-    union(x, y)
+    i, j  = map(int, input().split())
+    union(i, j)
 
 s, e = map(int, input().split())
+
 if find(s) == find(e):
     print(1)
 else:
