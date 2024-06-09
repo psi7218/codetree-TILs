@@ -4,7 +4,8 @@ input = sys.stdin.readline
 n, m = map(int, input().split())
 
 uf = [i for i in range(n+1)]
-
+visited = [False] * (n + 1)
+size = [1] * (n + 1)
 def find(x):
     if uf[x] == x:
         return x
@@ -13,41 +14,35 @@ def find(x):
 
 def union(x, y):
     a, b = find(x), find(y)
-    uf[b] = a
+    if a != b:
+        uf[a] = b 
+        size[b] += size[a]
 
-chart = [[1,i] for i in range(n + 1)]
-graph = [sorted(list(map(int, input().split()))) for _ in range(m)]
-graph.sort(key = lambda x : x[0])
+for _ in range(m):
+    c, d = map(int, input().split())
+    union(c, d)
 
 s, t, cnt = map(int, input().split())
 
-phase = [set() for j in range(n+1)]
+start = find(s)
+end = find(t)
+num_list = []
+for i in range(1, n + 1):
+    idx = find(i)
 
-for start, end in graph:
-    union(start, end)
-    idx = find(start)
-    phase[idx].add(end)
-
-
-for ix in range(len(phase)):
-    chart[ix] = [len(phase[ix]) + 1, ix]
-chart.sort(key = lambda x : -x[0])
-answer = len(phase[s]) + 1
-
-for count, index in chart:
-    if cnt == 0:
-        break
-    if index == s or index == 0:
+    if idx == start or idx == end:
         continue
 
-    if t in phase[index]:
+    if visited[idx]:
         continue
     
-    else:
-        if find(t) != find(index) and find(s) != find(index):
-            answer += count
-            cnt -= 1
+    visited[idx] = True
+    num_list.append(size[idx])
 
-# print(phase)
-# print(chart)
+answer = size[start]
+num_list.sort(reverse=True)
+
+for z in range(min(cnt, len(num_list))):
+    answer += num_list[z]
+
 print(answer)
