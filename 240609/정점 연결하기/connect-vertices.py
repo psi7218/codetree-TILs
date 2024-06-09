@@ -17,5 +17,5 @@ for _ in range(n-2):
 for i in range(2, n+1):
     I = find(i)
     if I != find(1):
-        print(1, I)
+        print(1, i)
         break
