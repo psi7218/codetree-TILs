@@ -37,15 +37,17 @@ answer = len(phase[s]) + 1
 for count, index in chart:
     if cnt == 0:
         break
-    if index == s:
+    if index == s or index == 0:
         continue
 
     if t in phase[index]:
         continue
     
     else:
-        answer += count
-        cnt -= 1
+        if find(t) != find(index):
+            answer += count
+            cnt -= 1
 
-
+# print(phase)
+# print(chart)
 print(answer)
