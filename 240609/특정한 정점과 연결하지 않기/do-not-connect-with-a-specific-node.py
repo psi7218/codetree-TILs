@@ -44,7 +44,7 @@ for count, index in chart:
         continue
     
     else:
-        if find(t) != find(index):
+        if find(t) != find(index) and find(s) != find(index):
             answer += count
             cnt -= 1
 
