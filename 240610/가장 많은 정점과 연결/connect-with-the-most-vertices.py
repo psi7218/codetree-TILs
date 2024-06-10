@@ -27,7 +27,7 @@ for idx in range(2, n+1):
     I = find(idx)
 
     if standard != I:
-        answer += (points[idx] + points[1])
+        answer += (points[I] + points[1])
         union(1, idx)
     
 
