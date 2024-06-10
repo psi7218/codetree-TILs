@@ -18,4 +18,4 @@ def union(x, y):
 for _ in range(n):
     s, t = map(int, input().split())
     union(s, t)
-    print(size[t])
+    print(max(size[t], size[s]))
