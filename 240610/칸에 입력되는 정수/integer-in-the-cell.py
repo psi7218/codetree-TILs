@@ -11,14 +11,15 @@ def find(x):
     return uf[x]
 
 
-answer = 0
-for _ in range(m):
+answer = m
+for i in range(1,m + 1):
     num = int(input())
     val = find(num)
 
     if val == 0:
+        answer = i - 1
         break
-    
+
     uf[val] = find(val -1)
 
 print(answer)
