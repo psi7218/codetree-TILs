@@ -38,8 +38,7 @@ for idx in range(1, len(points)):
         answer += (standard + point)
 
         standard = min(standard, point)
-        uf[1] = I
-
+        uf[find(1)] = I
 
 if answer <= k:
     print(answer)
