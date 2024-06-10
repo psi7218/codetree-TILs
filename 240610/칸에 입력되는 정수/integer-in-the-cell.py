@@ -9,12 +9,14 @@ def find(x):
     uf[x] = find(uf[x])
     return uf[x]
 
-for idx in range(1,m+1):
+answer = 0
+for _ in range(m):
     num = int(input())
     val = find(num)
 
     if val == 0:
-        print(idx - 1)
+        print(answer)
         break
     else:
         uf[val] -= 1
+        answer += 1
