@@ -15,8 +15,9 @@ for _ in range(m):
     val = find(num)
 
     if val == 0:
-        print(answer)
         break
     else:
         uf[val] -= 1
         answer += 1
+
+print(answer)
