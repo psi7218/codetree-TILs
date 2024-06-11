@@ -20,7 +20,7 @@ def union(x, y):
     uf[s] = t
 
 answer = 0
-for i,j,k in mst:
+for k, i, j in mst:
     if find(i) == find(j):
         continue
     union(i,j)
