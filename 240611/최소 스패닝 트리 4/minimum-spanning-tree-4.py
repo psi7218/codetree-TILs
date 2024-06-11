@@ -20,7 +20,7 @@ def union(x, y):
     uf[X] = Y
 
 answer = 0
-
+cnt = 0 
 for k, i, j in mst:
     if find(i) == find(j):
         continue
@@ -30,5 +30,9 @@ for k, i, j in mst:
     
     union(i,j)
     answer += k
+    cnt += 1
 
-print(answer)
+if cnt == n - 1:
+    print(answer)
+else:
+    print(-1)
