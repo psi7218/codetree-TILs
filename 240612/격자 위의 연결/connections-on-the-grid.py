@@ -1,47 +1,45 @@
-n, m = map(int, input().split())
-mst = []
+n, m = tuple(map(int, input().split()))
+edges = []
+uf = [0] * (n * m + 1)
 
-uf = [[[] for _ in range(m)] for _ in range(n)]
-for s in range(n):
-    for t in range(m):
-        uf[s][t] = [s,t]
+for i in range(1, n + 1):
+    costs = list(map(int, input().split()))
+    for j in range(1, m):
 
-def find(lst):
-    x, y = lst
-    if uf[x][y] == [x,y]:
-        return uf[x][y] 
-    uf[x][y] = find(uf[x][y])
-    return uf[x][y]
+        x = (i - 1) * m + j
+        y = (i - 1) * m + j + 1
 
-def union(c, d):
-    Cx,Cy = find(c)
-    Dx,Dy = find(d)
+        edges.append((costs[j - 1], x, y))
 
-    uf[Cx][Cy] = [Dx,Dy]
-    
+for i in range(1, n):
+    costs = list(map(int, input().split()))
+    for j in range(1, m + 1):
+        x = (i - 1) * m + j
+        y = i * m + j
 
-for i in range(n):
-    num_list = list(map(int, input().split()))
-    for j in range(m-1):
-        mst.append([[i,j],[i,j+1],num_list[j]])
+        edges.append((costs[j - 1], x, y))
 
-for a in range(n-1):
-    num_list = list(map(int, input().split()))
-    for b in range(m):
-        mst.append([[a,b],[a+1,b], num_list[b]])
 
-mst.sort(key = lambda x : x[2])
+def find(x):
+    if uf[x] == x:
+        return x
+    uf[x] = find(uf[x])
+    return uf[x]
 
-cnt = 0
-answer = 0
-for z in range(len(mst)):
-    start, end, val = mst[z]
-    if find(start) != find(end):
-        union(start, end)
-        answer += val
-        cnt += 1
+def union(x, y):
+    X = find(x)
+    Y = find(y)
+    uf[X] = Y
 
-    if cnt == n*m - 1:
-        break
+edges.sort()
 
-print(answer)
+for i in range(1, n * m + 1):
+    uf[i] = i
+
+ans = 0
+for cost, x, y in edges:
+    if find(x) != find(y):
+        ans += cost
+        union(x, y)
+
+print(ans)
