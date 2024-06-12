@@ -23,13 +23,14 @@ for i in range(1, n+1):
         mst.append([i,j, dist])
     loc.append([x,y])
 mst.sort(key = lambda x : x[2])
-print(mst)
+cnt = 0
 for _ in range(m):
     val1, val2 = map(int, input().split())
-    union(val1, val2)
-
+    if find(val1) != find(val2):
+        union(val1, val2)
+        cnt += 1
 answer = 0
-cnt = m
+
 for idx in mst:
     start, end, distance = idx
     if find(start) != find(end):
@@ -37,7 +38,7 @@ for idx in mst:
         cnt += 1
         union(start, end)
     
-    print(f"{answer:.2f}")
+
     if cnt == n - 1:
         break
 
