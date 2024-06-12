@@ -19,18 +19,14 @@ def union(x, y):
     a, b = find(x), find(y)
     uf[a] = b 
 
-cnt = 0
+last_val = 0
 answer = 0
 for lst in mst:
     s, e, val = lst
-    if cnt == n - 2:
-        break
-        
+
     if find(s) != find(e):
         answer += val
-        cnt += 1
-        union(s, e)
-    
-    
 
-print(answer)
+        union(s, e)
+        last_val = val
+print(answer -last_val)
