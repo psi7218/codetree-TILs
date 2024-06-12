@@ -7,11 +7,13 @@ dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
 INF = int(1e9)
 c, d = 0, 0
+cnt = 0
 for i in range(n):
     for j in range(n):
         if arr[i][j] == 1:
             c, d = i, j
-
+        if arr[i][j] == 2:
+            cnt += 1
 visited = [[INF] * n for _ in range(n)]
 q = []
 heapq.heappush(q, (0, c, d))
@@ -35,8 +37,9 @@ while q:
                     heapq.heappush(q, (0, nx, ny))
                     answer += cost + 1
                     visited[nx][ny] = cost + 1
+                    cnt -= 1
 
-if answer == 0:
-    print(-1)
-else:
+if cnt == 0:
     print(answer)
+else:
+    print(-1)
