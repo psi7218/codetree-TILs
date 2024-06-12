@@ -13,6 +13,7 @@ def find(x):
 def union(x, y):
     a, b = find(x), find(y)
     uf[a] = b 
+
 for i in range(1, n+1):
     x, y = map(int, input().split())
 
@@ -22,7 +23,7 @@ for i in range(1, n+1):
         mst.append([i,j, dist])
     loc.append([x,y])
 mst.sort(key = lambda x : x[2])
-
+print(mst)
 for _ in range(m):
     val1, val2 = map(int, input().split())
     union(val1, val2)
@@ -36,6 +37,7 @@ for idx in mst:
         cnt += 1
         union(start, end)
     
+    print(f"{answer:.2f}")
     if cnt == n - 1:
         break
 
