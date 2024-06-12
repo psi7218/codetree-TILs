@@ -23,12 +23,14 @@ cnt = 0
 answer = 0
 for lst in mst:
     s, e, val = lst
+    if cnt == n - 2:
+        break
+        
     if find(s) != find(e):
         answer += val
         cnt += 1
         union(s, e)
     
-    if cnt == n - 2:
-        break
+    
 
 print(answer)
