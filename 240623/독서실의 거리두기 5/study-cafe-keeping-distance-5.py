@@ -5,6 +5,7 @@ temp = - 1
 for i in range(n):
     if line[i] == 1:
         if temp == -1:
+            answer = i
             temp = i
         else:
             answer = max(answer, (i - temp) // 2)
