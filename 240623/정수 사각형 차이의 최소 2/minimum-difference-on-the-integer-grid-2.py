@@ -12,7 +12,15 @@ for k in range(1,n):
 
 for i in range(1,n):
     for j in range(1,n):
-        dp[i][j][0] = min(min(dp[i-1][j][0], dp[i][j-1][0]), arr[i][j])
-        dp[i][j][1] = max(min(dp[i-1][j][1], dp[i][j-1][1]), arr[i][j])
+        val1 = max(arr[i][j], dp[i-1][j][1]) - min(arr[i][j], dp[i-1][j][0])
+        val2 = max(arr[i][j], dp[i][j-1][1]) - min(arr[i][j], dp[i][j-1][0])
 
+        if val1 > val2:
+            dp[i][j] = [min(arr[i][j], dp[i][j-1][0]), max(arr[i][j], dp[i][j-1][1])]
+        else:
+            dp[i][j] = [min(arr[i][j], dp[i-1][j][0]), max(arr[i][j], dp[i-1][j][1])]
+
+
+# for line in dp:
+#     print(line)
 print(abs(dp[n-1][n-1][0] - dp[n-1][n-1][1]))
