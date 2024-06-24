@@ -1,6 +1,7 @@
 n = int(input())
 dp = [1] * n
 ar = [tuple(map(int, input().split())) for _ in range(n)]
+ar.sort()
 for i in range(1,n):
     for j in range(i):
         if ar[j][1] < ar[i][0]:
