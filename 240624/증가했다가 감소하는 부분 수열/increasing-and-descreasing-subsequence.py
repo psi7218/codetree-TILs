@@ -12,12 +12,16 @@ def func(k):
             if harr[j] < harr[i]:
                 high[i] = max(high[i], high[j] + 1)
 
-    for i in range(1, len(larr)):
-        if larr[i] >= ar[k]:
-            continue
-        for j in range(i):
-            if larr[j] > larr[i]:
-                low[i] = max(low[i], low[j] + 1)
+    if len(larr) == 1:
+        low = [0]
+    else:
+        for i in range(1, len(larr)):
+            if larr[i] >= max(harr):
+                continue
+            for j in range(i):
+                if larr[j] > larr[i]:
+                    low[i] = max(low[i], low[j] + 1)
+
 
     if high and low:
         return max(high) + max(low)
