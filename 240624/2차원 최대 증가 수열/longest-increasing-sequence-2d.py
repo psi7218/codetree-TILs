@@ -13,7 +13,7 @@ for i in range(1, n):
 
 answer = 1
 for x in range(1, n):
-    for y in range(1, n):
+    for y in range(1, m):
         answer = max(answer, dp[x][y])
 
 print(answer)
