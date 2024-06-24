@@ -29,5 +29,5 @@ for k in range(1, n-1):
 
         answer = max(answer, high[k] + max(tmp))
 
-answer = max(answer, max(low))
+answer = max(answer, max(low), max(high))
 print(answer)
