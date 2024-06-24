@@ -25,7 +25,7 @@ while start < end:
     result = func(mid)
     # print(result)
     if result >= answer:
-        end = mid -1
+        end = mid
         answer = result 
     else:
         start = mid + 1
