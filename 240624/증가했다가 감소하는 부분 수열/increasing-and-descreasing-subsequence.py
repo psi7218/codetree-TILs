@@ -1,39 +1,27 @@
+MAX_K = 2
+
 n = int(input())
-# (감소, 증가)
-ar = list(map(int, input().split()))
-answer = 0
-def func(k):
-    high = [1] * (k + 1)
-    low = [1] * (n - k - 1)
-    harr = ar[:k + 1]
-    larr = ar[k+1:]
-    for i in range(1, len(harr)):
-        for j in range(i):
-            if harr[j] < harr[i]:
-                high[i] = max(high[i], high[j] + 1)
-
-    if len(larr) == 1:
-        low = [0]
-    else:
-        for i in range(1, len(larr)):
-            if larr[i] >= max(harr):
-                continue
-            for j in range(i):
-                if larr[j] > larr[i]:
-                    low[i] = max(low[i], low[j] + 1)
+arr = list(map(int, input().split()))
 
 
-    if high and low:
-        return max(high) + max(low)
+dp = [[0] * MAX_K for _ in range(n)]
 
-    else:
-        if high:
-            return max(high)
-        else:
-            return max(low)
+for i in range(n):
+    dp[i][0] = 1
+    dp[i][1] = 1
 
+    for j in range(i):
+        if arr[j] < arr[i]:
+            dp[i][0] = max(dp[i][0], dp[j][0] + 1)
 
-for k in range(n):
-    answer = max(answer, func(k))
+        if arr[j] > arr[i]:
+            dp[i][1] = max(dp[i][1], dp[j][1] + 1)
 
-print(answer)
+    dp[i][1] = max(dp[i][1], dp[i][0])
+
+ans = 0
+for i in range(n):
+    for j in range(MAX_K):
+        ans = max(ans, dp[i][j])
+
+print(ans)
