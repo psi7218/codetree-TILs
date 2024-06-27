@@ -3,7 +3,7 @@ a = [0] + list(map(int, input().split()))
 
 INF = int(1e9)
 
-dp = [[-INF for _ in range(n + 1)] for _ in range(n + 1)]
+dp = [[-1001 for _ in range(n + 1)] for _ in range(n + 1)]
 answer = -INF
 
 for i in range(1, n + 1):
