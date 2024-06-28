@@ -11,7 +11,7 @@ public class Main {
         s = Long.parseLong(st.nextToken());
 
         long start = 1;
-        long end = 200000000;
+        long end = 2000000000;
         long answer = 0;
         while (start <= end) {
             long mid = (start + end) / 2;
