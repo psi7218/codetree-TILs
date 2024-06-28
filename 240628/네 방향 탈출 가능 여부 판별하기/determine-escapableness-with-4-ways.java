@@ -40,7 +40,7 @@ public class Main {
             int x = now[0];
             int y = now[1];
 
-            if (x == n-1 && y == n-1) {
+            if (x == n-1 && y == m-1) {
                 return 1;
             }
             for (int k = 0; k < 4; k++) {
