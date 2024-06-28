@@ -10,7 +10,7 @@ public class Main {
 
         s = Integer.parseInt(st.nextToken());
 
-        long start = 0;
+        long start = 1;
         long end = s;
         long answer = 0;
         while (start <= end) {
