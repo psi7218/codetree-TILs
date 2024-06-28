@@ -8,7 +8,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        s = Integer.parseInt(st.nextToken());
+        s = Long.parseLong(st.nextToken());
 
         long start = 1;
         long end = 200000000;
