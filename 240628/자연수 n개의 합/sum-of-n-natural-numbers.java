@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static long sum(long num) {
-        long val = (num + 1) * (num + 1) / 2;
+        long val = (num) * (num + 1) / 2;
         return val;
     }
 }
