@@ -4,13 +4,13 @@ lst = [list(map(int, input().split())) for _ in range(n)]
 lst.sort()
 
 left = 1
-right = 10 ** 9
+right = 10 ** 9 + 1
 answer = 0
 
 
 def func(val):
     cnt = 0
-    temp = -10**9
+    temp = -10**9 -1
     for a, b in lst:
         temp = max(a, temp + val)
         if a <= temp <= b:
