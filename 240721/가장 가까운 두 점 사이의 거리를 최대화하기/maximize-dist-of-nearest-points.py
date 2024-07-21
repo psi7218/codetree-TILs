@@ -23,7 +23,7 @@ while left <= right:
     mid = (left + right) // 2
 
     if func(mid):
-        answer = max(answer, left)
+        answer = max(answer, mid)
         left = mid + 1
     else:
         right = mid - 1
