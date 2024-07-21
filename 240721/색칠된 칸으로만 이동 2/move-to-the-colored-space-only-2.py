@@ -13,7 +13,6 @@ for i in range(n):
         if is_exist[i][j] == 1:
             lst.append([i, j])
 
-k = len(lst)
 left = 0
 right = 1000000001
 
@@ -25,10 +24,10 @@ def test():
     visited[i][j] = 0
 
     q = deque()
-    q.append((i, j))
+    q.append((i, j, 0))
 
     while q:
-        x, y = q.popleft()
+        x, y, dist = q.popleft()
 
         for k in range(4):
             nx = x + dx[k]
@@ -36,10 +35,12 @@ def test():
 
             if 0 <= nx < n and 0 <= ny < m:
                 val = abs(graph[x][y] - graph[nx][ny])
-                if val < visited[nx][ny]:
-                    q.append((nx, ny))
-                    visited[nx][ny] = val
+                if max(val, dist) < visited[nx][ny]:
+                    q.append((nx, ny, max(val, dist)))
+                    visited[nx][ny] = max(val, dist)
+
     answer = 0
+
     for a, b in lst:
         answer = max(answer, visited[a][b])
 
