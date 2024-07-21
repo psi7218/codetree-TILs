@@ -15,56 +15,35 @@ for i in range(n):
 
 k = len(lst)
 left = 0
-right = 1000000000
-answer = 1000000000
+right = 1000000001
 
-def test(s, e, dist):
-    si, sj = lst[s]
-    ei, ej = lst[e]
 
-    visited = [[0] * m for _ in range(n)]
-    visited[si][sj] = 1
+def test():
+    i, j = lst[0]
+
+    visited = [[right] * m for _ in range(n)]
+    visited[i][j] = 0
 
     q = deque()
-    q.append((si, sj))
+    q.append((i, j))
 
     while q:
         x, y = q.popleft()
 
-        if x == ei and y == ej:
-            return 1
-        
-        for p in range(4):
-            nx = x + dx[p]
-            ny = y + dy[p]
+        for k in range(4):
+            nx = x + dx[k]
+            ny = y + dy[k]
 
-            if 0 <= nx < n and 0<= ny < m:
-                if visited[nx][ny] == 0 and abs(graph[x][y] - graph[nx][ny]) <= dist:
+            if 0 <= nx < n and 0 <= ny < m:
+                val = abs(graph[x][y] - graph[nx][ny])
+                if val < visited[nx][ny]:
                     q.append((nx, ny))
-                    visited[nx][ny] = 1
+                    visited[nx][ny] = val
+    answer = 0
+    for a, b in lst:
+        answer = max(answer, visited[a][b])
 
-    return 0
-
-
-
-
-def ispossible(dist):
-
-    for a in range(k):
-        for b in range(a+1, k):
-            if not test(a, b, dist):
-                return 0
-
-    return 1
+    print(answer)
 
 
-while left <= right:
-    mid = (left + right) // 2
-
-    if ispossible(mid):
-        answer = min(answer, mid)
-        right = mid - 1
-    else:
-        left = mid + 1
-
-print(answer)
+test()
