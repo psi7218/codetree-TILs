@@ -6,40 +6,19 @@ lst.sort()
 
 start = 0
 end = 1000000000
-
 answer = 1000000000
-
-def find(t):
-    left = 0
-    right = n - 1
-    middleval = n
-    while left <= right:
-        mid = (left + right) // 2
-        if lst[mid] > t:
-            right = mid - 1
-            middleval = min(middleval, mid)
-        else:
-            left = mid + 1
-
-    return middleval
 
 def ispossible(val):
     idx = 0
-    cnt = 0
-    flag = False
-    while cnt < k:
-        now = lst[idx] + 2*val
-        location = find(now)
-
-        if location == n:
-            flag = True
-            break
+    cnt = 1
+    for i in range(n):
+        if lst[i] - lst[idx] <= 2 * val:
+            continue
         else:
-            idx = location
-
-        cnt += 1
-
-    return flag
+            cnt += 1
+            idx = i
+    
+    return cnt <= k
 
 while start <= end:
     mid = (start + end) // 2
