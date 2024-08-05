@@ -8,38 +8,26 @@ end = 10**9
 answer = 10**9
 
 def ispossible(val):
-    idx = 0
-    buses = 0
-    complete = False
-    while buses < m:
-        comp = lst[idx]
-        temp = idx + 1
-        man = 1
-        flag = False
-        while man < c:
-            if lst[temp] - comp <= val:
-                temp += 1
-                man += 1
-
-                if temp == n:
-                    complete = True
-                    break
+    total = 0 
+    newval = 0
+    while True:
+        temp = newval
+        man_cnt = 1
+        idx = temp + 1
+        while man_cnt < c and idx < n:
+            if lst[idx] - lst[temp] <= val:
+                idx += 1
+                man_cnt += 1
             else:
-                flag = True
                 break
-        
-        if flag:
-            break
+        newval = idx
+        total += 1
 
-        if complete:
+        if newval == n:
             break
-        
-        idx = temp 
-        buses += 1
     
-    if idx == n or complete:
-        return True
-    return False
+    return total <= m 
+
 
 while start <= end:
     mid = (start + end) // 2
