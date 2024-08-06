@@ -13,19 +13,11 @@ for a in A:
 for b in B:
     b_dict[b] += 1
 
-flag = False
-for key in b_dict:
-    if a_dict.get(key):
-        if a_dict[key] >= b_dict[key]:
-            continue
-    
-        else:
-            flag = True
-            break
 
-if flag:
-    print(0)
-    exit()
+for key in b_dict:
+    if a_dict[key] < b_dict[key]:
+        print(0)
+        exit()
 
 answer = 1
 for num in order:
