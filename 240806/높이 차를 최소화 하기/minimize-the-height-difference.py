@@ -8,13 +8,13 @@ for _ in range(n):
     line = list(map(int, input().split()))
     graph.append(line)
 
-left = 1
+left = 0
 right = 500
 answer = 501
 
 
 def muterable(diff):
-    for i in range(1, 501 - diff):
+    for i in range(0, 501 - diff):
         if is_possible(i, i + diff):
             return True
 
