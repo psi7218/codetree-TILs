@@ -6,9 +6,10 @@ rr -= 1
 rc -= 1
 graph[rr][rc] = -1  ## 루돌프 위치 (-1)
 santa = []
-_dx, _dy = [0,1,1,1,0,-1,-1,-1], [1,1,0,-1,-1,-1,0,1]
+_dx, _dy = [1,1,1,0,-1,-1,-1, 0], [1,0,-1,-1,-1,0,1, 1]
 dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1]
 score = [0] * (p+1)
+death = [False] * (p + 1)
 for _ in range(p):
     num, x, y = map(int, input().split())
     santa.append((num, x - 1, y - 1))
@@ -38,19 +39,21 @@ def rudolph_move():
         number, sa_x, sa_y = santa[graph[rr][rc] - 1]
         score[number] += c
 
-        status[number] += 2
+        status[number] = 2
 
         temp_x, temp_y = sa_x + _dx[maxval[2]] * c, sa_y + _dy[maxval[2]] * c
 
         if not (0 <= temp_x < n and 0 <= temp_y < n):
             santa[number - 1] = (number, -1, -1)
+            death[number] = True
             graph[rr][rc] = -1
-
+            if death[1:] == [True] * p:
+                print(*score[1:])
+                exit()
             return
 
         while True:
             if graph[temp_x][temp_y]:
-                # graph[s_x][s_y] = 0
                 santa[number - 1] = (number, temp_x, temp_y)
 
                 now_num = graph[temp_x][temp_y]
@@ -62,6 +65,10 @@ def rudolph_move():
 
                 if not (0 <= temp_x < n and 0 <= temp_y < n):
                     santa[number - 1] = (number, -1, -1)
+                    death[number] = True
+                    if death[1:] == [True] * p:
+                        print(*score[1:])
+                        exit()
                     break
             if graph[temp_x][temp_y] == 0:
                 santa[number - 1] = (number, temp_x, temp_y)
@@ -116,8 +123,12 @@ def santa_move():
             if not (0 <= new_x < n and 0 <= new_y < n):
                 graph[x][y] = 0
                 santa[num - 1] = (num, -1, -1)
+                death[num] = True
+                if death[1:] == [True] * p:
+                    print(*score[1:])
+                    exit()
             else:
-                status[num] += 2
+                status[num] = 2
                 santa.sort()
                 temp_x, temp_y = new_x, new_y
                 graph[x][y] = 0
@@ -135,6 +146,10 @@ def santa_move():
 
                         if not (0 <= temp_x < n and 0 <= temp_y < n):
                             santa[num - 1] = (num, -1, -1)
+                            death[num] = True
+                            if death[1:] == [True] * p:
+                                print(*score[1:])
+                                exit()
                             break
                     if graph[temp_x][temp_y] == 0:
                         santa[num - 1] = (num, temp_x, temp_y)
@@ -153,6 +168,7 @@ def santa_move():
 
 
 for time in range(1, m+1):
+
     rudolph_move()
     santa_move()
 
@@ -165,12 +181,13 @@ for time in range(1, m+1):
         if status[z] > 0:
             status[z] -= 1
 
-    # for line in graph:
-    #     print(line)
+
     #
     # print('------')
-    # print(f'status: {status}')
-    # print(f'santa: {santa}')
+    # for line in graph:
+    #     print(line)
+    # print(death)
+    # print(status)
     # print(f'score : {score}')
     # print(f'"----------: {time}턴 끝"')
 print(*score[1:])
