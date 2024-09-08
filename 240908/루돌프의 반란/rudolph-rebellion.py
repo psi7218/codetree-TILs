@@ -120,11 +120,10 @@ def santa_move():
                 status[num] += 2
                 santa.sort()
                 temp_x, temp_y = new_x, new_y
-                s_x, s_y = x, y
+                graph[x][y] = 0
 
                 while True:
                     if graph[temp_x][temp_y]:
-                        graph[s_x][s_y] = 0
                         santa[num-1] = (num, temp_x, temp_y)
 
                         now_num = graph[temp_x][temp_y]
@@ -139,7 +138,6 @@ def santa_move():
                             break
                     if graph[temp_x][temp_y] == 0:
                         santa[num - 1] = (num, temp_x, temp_y)
-                        graph[s_x][s_y] = 0
                         break
 
                 for num, xx, yy in santa:
