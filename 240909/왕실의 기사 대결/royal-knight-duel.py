@@ -16,13 +16,14 @@ for idx in range(1, N + 1):
             knights_board[i][j] = idx
 
             if i == r:
-                knights[idx][0].append([i,j])
+                knights[idx][0].append([i, j])
             if j == c + w - 1:
-                knights[idx][1].append([i,j])
+                knights[idx][1].append([i, j])
             if i == r + h - 1:
-                knights[idx][2].append([i,j])
+                knights[idx][2].append([i, j])
             if j == c:
-                knights[idx][3].append([i,j])
+                knights[idx][3].append([i, j])
+
 
 
 def move_knights(k_idx, dir):
@@ -59,6 +60,7 @@ def changeLocate(lst, dir, nomove):
                 knights_board[a + dx[dir]][b + dy[dir]] = num
                 if board[a + dx[dir]][b + dy[dir]] == 1:
                     cnt += 1
+
         for loc in range(4):
             for edge in knights[num][loc]:
                 edge[0] += dx[dir]
@@ -67,32 +69,32 @@ def changeLocate(lst, dir, nomove):
         record_lst[num] = (rr + dx[dir], cc + dy[dir], hh, ww)
         if num == nomove:
             continue
-            
+
         lifes[num] -= cnt
         if lifes[num] < 1:
             for e in range(1, L + 1):
                 for f in range(1, L + 1):
                     if knights_board[e][f] == num:
                         knights_board[e][f] = 0
-                        
-                        
-for _ in range(Q):
+
+
+for abcd in range(1, Q + 1):
     a, b = map(int, input().split())
     is_possible = True
     move_lst = set()
-    if not lifes[a]:
+    if lifes[a] < 1:
         continue
 
     move_lst.add(a)
     move_knights(a, b)
 
     if is_possible:
-        changeLocate(move_lst, b, a)
 
+        changeLocate(move_lst, b, a)
 
 answer = 0
 for q in range(1, N+1):
-    if lifes[q] == 0:
+    if lifes[q] < 1:
         continue
     answer += result_check[q] - lifes[q]
 
